@@ -1,0 +1,119 @@
+Project Focuser
+Table of Contents: 
+Brainstorming
+Description
+Classes
+GUI planning
+The objects
+Difficult factors
+Connections and linking
+Input/Output 
+Error checking
+Flowcharts
+Concepts included
+If I have time
+
+
+Brainstorming:
+GUI1: daily tasks, time studied, forgetting curve graph, daily review, being able to postpone the reviews
+GUI2: Showing the month and the schedule
+GUI3: with timer, time studied, session goals, opened/completed tasks when using checkmark, background of choice
+GUI4: year tab, with all the tasks displaying with the months and etc
+GUI5: daily tab, showing daily tasks, time estimate and calculation of the total time it takes to complete the tasks when user enters each task estimate time, time to do the tasks
+GUI 6: weekly tab, showing the seven days of the week, the tasks to complete each day and etc
+
+
+Description: 
+A planning calendar with two fundamental functions and an additional one. 
+The first idea is to let the user know the next date they need to review a concept according to the forgetting curve, which hypothesizes the decline of memory retention over time. By allowing the user to enter a date they recently studied the concept, we can use calculations to predict all of the other times they need to learn the concepts again, and display the results, preferably on the monthly or yearly calendar, but to begin with, we’ll simply display the next days the concept needs to be reviewed, this will be a feature in the main menu.
+The second key feature is a focusing tab with its key feature being a pomodoro timer, allowing the user to enter the time they wish to study and the pause between each pass, as they study, they will start the timer, and it will ring when the time runs out, allowing the user to take a pause. If there is time, I will make the time studied reset every day, and at the end of each day you will see how much time you have studied for. 
+
+The last idea is to allow the user to also enter their daily tasks in the daily tasks tab, entering the task they need to get done and the time they estimate to get it done within, so the program can calculate the total time it takes for them to complete it and display the tasks in the main menu. 
+Classes: 
+Main page classes
+MainPageGUI class, including action listeners
+Local time class, displaying and updating the real-life time
+Review tasks classes
+ReviewTaskGUI, including action listeners
+Review task object creation class
+Review task I/O class
+Pomodoro Timer classes
+PomodoroGUI, including action listeners
+CountDownTimer, changed depending on the methods and runs based on the user interactions
+Daily tasks
+Daily task object creation class
+Daily task GUI
+Main Page
+
+The main page is a collection of information from all of the other 3 classes. The middle of the page shows a picture of the forgetting curve, which can be done by putting an ImageIcon on a JLabel. 
+The page has three buttons in the middle, each taking the user to a different Jframe, when clicking on the top one, the pomodoro timer page will display instead on the main page, and an additional feature revolving around the pomodoro timer and the main page is that the total time studied in the pomodoro timer page can be added and displayed on the top of the main page. 
+When the second button is pressed, the user will be taken to a reviewing tasks page, it allows the user to create the reviewing tasks, the information stored from that class will be displayed here in the main class, preferably depending on the least time left there is for completing the task. 
+This may be done by using a method first comparing the time of the greatest unit to the smallest unit of time, displaying the one with the least amount of time left. These tasks can be postponed and edited. More details are provided about the reviewing tasks below. The daily tasks are created and changed in the same ways. 
+
+Additionally, I plan to include a clock in the program displaying the changing time in real life, i.e the time in Kanata at the moment, this could be done using java.text.SimpleDateFormat and java.util.Date, to make the time continue, I will use thread and the sleep function to run the time in a method using recursion. 
+Reviewing Tasks
+
+
+As the reviewing tasks require some calculations and have properties, to create reviewing tasks first an object creation class will be coded. The review class objects feature 2 properties, a name and a property called entered time. This property is crucial for the program, because the calculations need this step in order to progress, the enteredTime is a situation where one of the four situations of the forgetting curve, i.e needs to be studied one hour later, one day later, one week later and one month later. Depending on when the next review time is, different labels will appear on the next study time.
+
+To show the next study time I could either make the program so the next study time updates all the time by using timers, but it is safer to start with only displaying the phase it is on instead of the next study time. For receiving user input for the review task, I could either create a new frame popup, with buttons with choices of the next study time, or I could make a dropdown featuring the first, second, third or fourth time doing a task, and using a switch statement based on the chosen time type. 
+
+When a review task is completed, the user can click on a checkbox, allowing the task to proceed to the next stage of reviewing, with a new study time displaying, this is done by creating a method in the review task creation class, making the task change one of the properties to the next stage. Originally I thought of having a feature for the user to remove the tasks, but because there’s not really a way to completely remove an object, it’s more likely that it’s edited, so when clicking on an editing button, a method taking in two parameters will change the properties of the review task object. A possible additional feature is to postpone a task, simply making it appear days later for the user to review, by also using a method to change the time.Once entered, the reviewing tasks will need to be stored in a file using BufferedWriter and read using BufferedReader, converting the next study time into the type it was when extracting it, using e.g. Integer.parseInt, still as an instance of the review task object. The tasks will be extracted from these files to be used next time when opening the program. An additional feature is the scrolling feature, allowing the user to enter more than a certain number of tasks. 
+Daily Tasks
+The daily tasks is a more of an additional feature, it’s similar to the reviewing tasks, only that they will be created as objects with 3 different properties, the time estimate it takes to complete each task, a task name, and a status if the task is done. The time estimate is collected for calculating the total time it may take the user to complete all of the tasks, and the status for changing the appearance of the task once it has been done. The data will be stored and reconverted in a similar way to the reviewing tasks GUI, and the properties can be changed using likewise methods. The user will be able to interact with the daily tasks GUI likely to the reviewing tasks GUI. 
+
+Pomodoro Timer
+
+The pomodoro timer’s major feature is the countdown timer, to create a countdown timer, a CountdownTimerObject will be made in the CountDownTimer class implementing Runnable, which allows the use of threads. The countdown timer object will feature a single property i.e seconds that’s entered as one of the parameters into the CountDownTimer constructor. The use of threads allows us to “pau``se” the program and make it run slower, which will be put in a try/catch block.  
+
+To convert the time to minutes and seconds, a method will be used, receiving parameters as seconds, and, with the usage of “%”, be converted to time in “mm:ss” format. The calculations will also be progressive, i.e when the number of seconds becomes 0, one minute will go down to replace the time with 59 seconds. A GUI class will be created, where Buttons and labels are created. The labels include the session goals, where the user can enter their goals for the session in a total of 5 text fields, with a checkbox next to it, once the checkbox is clicked, the appearance of the text will change, indicating that a task is done, also adding 1 task to the “completed” label, as well as decreasing one from the “open” tasks label. These labels are only for displaying the number of tasks done in the session, and resets once we exit from the session. The maximum number of session goals that can be created is 5, therefore the limit for creating the tasks is also 5. 
+
+Another feature is allowing the user to choose or enter the time they wish to study for. After consideration of the possible complexities, it is most ideal to only set 1 hour, 30 minutes, 15 minutes, and 5 minutes timers for the user to choose. This can be achieved by using the java ComboBox, creating dropdowns for the length of the session to study for, getting the different integer values to use for the timer. But this is more of an additional feature, to begin with, we will set a 30 minute timer. When the start button is clicked, the timer will automatically start and count down, and when the pause button is clicked, the timer is paused, and the time display will stop moving. As the time goes down, an additional feature could be the amount of time studied in total for the whole day, which resets every 24 hours, this can be achieved through using the java.util.Date and SimpleDateFormat features with conditions. The last additional features would be allowing the user to choose a background colour or image, with the colour being changed simply by changing the background colour of the panel, or upload an image onto the panel. An idea is to include music choice as well, but once again that’s an additional feature. 
+
+Connections
+The menu GUI, i.e where the user can see the graph, their daily tasks and review, is linked to all the other 3 GUIs, with a pomodoro button, a reviewing tasks button, and a daily tasks button, closing the menu temporarily and taking the user to the other frame based on the button that’s pressed. The 3 GUIs, i.e the daily tasks GUI, the pomodoro timer GUI, and the reviewing tasks GUI are all linked back to the menu with each having a “go back” button on the GUI. 
+Visual Connections:
+
+If I have time: 
+Login feature using I/O 
+Menu page
+Display total time studied
+Include allowing the tasks to be checked
+Have the option to postpone or edit a task 
+Reviewing tasks page
+Scrolling feature
+Updating or countdown of next study time 
+Pomodoro timer
+Dropdown to choose time
+User’s own choice of background colour
+Adding music of the user’s choice
+Display calculated total time the user has studied for during the day, resets every day
+The daily tasks in general, as it is quite repetitive 
+Have a year tab calendar featuring the review tasks on the calendar
+Weekly schedule
+Yearly calendar
+
+Possible Difficulties:
+GUI linking 
+Calendar GUI
+Real-time displaying
+Timer calculations
+Forgetting curve calculation (which I have decided to not do)
+I/O usage and linking with the objects, information extraction
+
+Sample Input/Output:
+
+The user can enter the task name in the popup. 
+The information is saved in a file
+The information can later be accessed
+
+Concepts Included: 
+Arrays (storing the tasks) & strings (names, time)
+Methods (object interaction)
+Menu system (taking the user to different frames)
+For loops(printing, testing)
+Switch statements (time review type)
+File I/O (review tasks mainly)
+If and else with conditions (action listeners and checking mainly)
+GUI (all frames)
+Object creation and usage (review task objects)
