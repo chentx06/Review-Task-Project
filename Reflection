@@ -1,0 +1,31 @@
+Summative Project Reflection
+
+This project was interesting to do and I gained a much better understanding of FileIO and creating lists of arrays, as well as moving between the different classes. 
+This is also something I will be using in the future, and I might even add more features to it as time goes on, like music, more graphics and similar saving features. 
+During the process I also learned how to create GUI elements with less repetitive code and how to get, use and compare dates in real life. I find this to be very helpful, and it definitely increased my interest in coding. 
+
+There was many challenges while doing the code, including a lot of steps of debugging and error checking and trying to access things between the classes, but I gained experience from the previous group project, to start foundational, so to begin with I didn’t include as many variables and only started with creating, accessing and handling three objects and storing and getting the saved information from these objects. 
+Because my project revolved around dates, it was very difficult to begin with and I needed to watch new tutorials and learn things from scratch, so it was hard to bring all of the new information together. 
+For instance when I’m getting info saved from a file, the first step would be to print it in the console every time the project has started running, and when I can successfully do that, I’m supposing that the file reading worked, so I’m starting to incorporate other things into the program, but when I e.g. put the output on a label, it becomes null! 
+And I changed this already, so it’s hard to find back to the way I came from, and so I think it’s harder than you think to be debugging while coding at the same time. 
+
+And when I started handling the dates I encountered many errors in the console and conversion problems, because I’ve never used dates before, so before I knew that I could parse a string into a date and date back into a string, I struggled a lot with the code and it even made my logic messy, and I don’t know where to begin with, and I thought of a lot of ways of handling the user input and getting the date user is on, I even started thinking of creating a calendar, but I’ve only seen tutorials with the calendars in java FX, so I think I wouldn’t be able to reach that level of complexity in such short amount of time. And I had some difficulties in my code because sometimes something would overlay the saved info everytime the project is opened, so I ended up not creating objects every time but creating them only 1 time and only reading and editing from that point on. 
+I cannot count how many times my labels would display null and sometimes your code would be right and running, but as soon as you change something, it immediately crashes. 
+
+
+I have to improve on: 
+Consolidating the ideas more before starting to code
+Getting more sleep
+Try to plan out the video editing before doing it
+Keeping up with the plan
+Saving & reading files
+
+I will continue to be doing: 
+Debugging as I code
+Divide the code into different parts
+Keeping at least 4 copies of the whole project, going back and forth, forth for trying out new things with confidence and back in case anything goes wrong
+Keep updating between the copies
+Try to code a little bit every day
+Write down possible improvements and errors
+Step by step debugging 
+Starting from the most foundational code
